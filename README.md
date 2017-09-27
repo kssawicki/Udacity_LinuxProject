@@ -52,6 +52,8 @@ _Lightsail is very finicky, and will either not allow the changes to be saved, o
 2. `$ sudo service ssh restart`.
 3. Now you are able to log into the remote VM through ssh with the following command: `$ ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@52.34.208.247`.
 
+_Advice: I didn't do this step until the end of all of this project; I was worried about getting logged out and not being able to enter back in with Lightsail!_
+
 Source: [Ubuntu forums](http://ubuntuforums.org/showthread.php?t=1739013).
 
 ### 7 - Disable ssh login for *root* user
@@ -106,7 +108,7 @@ from catalog import app as application
 4. Activate the virtual environment: `$ source venv/bin/activate`.
 5. Change permissions to the virtual environment folder: `$ sudo chmod -R 777 venv`.
 6. Install Flask: `$ pip install Flask`.
-7. Install all the other project's dependencies: `$ pip install bleach httplib2 request oauth2client sqlalchemy python-psycopg2`. 
+7. Install all the other project's dependencies: `$ pip install bleach httplib2 request oauth2client sqlalchemy psycopg2`. 
 
 Sources: [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps), [Dabapps](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/).
 
@@ -158,7 +160,7 @@ Source: [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-r
 ```python
 engine = create_engine('postgresql://catalog:sillypassword@localhost/catalog')
 ```
-12. Setup the database with: `$ python /var/www/catalog/catalog/setup_database.py`.
+12. Setup the database with: `$ python /var/www/catalog/catalog/database_setup.py`.
 13. To prevent potential attacks from the outer world we double check that no remote connections to the database are allowed. Open the following file: `$ sudo nano /etc/postgresql/9.3/main/pg_hba.conf` and edit it, if necessary, to make it look like this: 
 ```
 local   all             postgres                                peer
@@ -177,9 +179,5 @@ Source: [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-s
 
 Source: [eHowStuff](http://www.ehowstuff.com/how-to-install-and-use-glances-system-monitor-in-ubuntu/).
 
-### 16 - Update OAuth authorized JavaScript origins
-
-1. To let users correctly log-in change the authorized URI to [http://ec2-52-34-208-247.us-west-2.compute.amazonaws.com/](http://ec2-52-34-208-247.us-west-2.compute.amazonaws.com/) on both Google and Facebook developer dashboards.
-
-### 17 - Restart Apache to launch the app
+### 16 - Restart Apache to launch the app
 1. `$ sudo service apache2 restart`.
