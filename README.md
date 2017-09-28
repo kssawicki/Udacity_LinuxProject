@@ -17,7 +17,7 @@ This was a pretty extensive project, and I definitely have to thank the followin
 
 ### 1 - Create a new user named *grader* and grant this user sudo permissions.
 
-1. Log into the remote VM as *root* user through ssh: `$ ssh root@52.34.208.247`.
+1. Log into the remote VM as *root* user through ssh: `$ sshubuntu@34.214.229.172`.
 2. Add a new user called *grader*: `$ sudo adduser grader`.
 3. Though Udacity and others may reccommend editing /etc/sudouser file - *DONT*. Instead, use this command: 
 `sudo usermod -a -G sudo (grader)`
